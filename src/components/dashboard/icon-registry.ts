@@ -1,0 +1,51 @@
+// Client-side icon lookup. Server Components pass an `iconKey` string (plain,
+// serializable data) instead of a component reference, since function
+// references cannot cross the server -> client boundary as props.
+import {
+  LayoutGrid,
+  Compass,
+  ListChecks,
+  Wallet,
+  Banknote,
+  UserCircle,
+  Bell,
+  HelpCircle,
+  Settings,
+  PlusCircle,
+  MessageSquareText,
+  Users2,
+  CreditCard,
+  BarChart3,
+  UsersRound,
+  Users,
+  Building2,
+  Receipt,
+  ShieldAlert,
+  LifeBuoy,
+  type LucideIcon,
+} from 'lucide-react';
+
+export const ICONS = {
+  layoutGrid: LayoutGrid,
+  compass: Compass,
+  listChecks: ListChecks,
+  wallet: Wallet,
+  banknote: Banknote,
+  userCircle: UserCircle,
+  bell: Bell,
+  helpCircle: HelpCircle,
+  settings: Settings,
+  plusCircle: PlusCircle,
+  messageSquareText: MessageSquareText,
+  users2: Users2,
+  creditCard: CreditCard,
+  barChart3: BarChart3,
+  usersRound: UsersRound,
+  users: Users,
+  building2: Building2,
+  receipt: Receipt,
+  shieldAlert: ShieldAlert,
+  lifeBuoy: LifeBuoy,
+} satisfies Record<string, LucideIcon>;
+
+export type IconKey = keyof typeof ICONS;
