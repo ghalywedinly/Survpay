@@ -4,10 +4,18 @@ import { useEffect, useState } from 'react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { useLocale } from 'next-intl';
 import { Locale } from '@/lib/types';
-import { formatDate } from '@/lib/format';
+import { formatDate, formatNumber } from '@/lib/format';
 import { Skeleton } from '@/components/ui/skeleton';
 
-export function TrendChart({ data, color = '#8636e8' }: { data: { date: string; count: number }[]; color?: string }) {
+export function TrendChart({
+  data,
+  color = '#8636e8',
+  valueLabel,
+}: {
+  data: { date: string; count: number }[];
+  color?: string;
+  valueLabel?: string;
+}) {
   const locale = useLocale() as Locale;
   // Recharts measures the container via the DOM, which isn't available
   // during SSR — render a placeholder until mounted to avoid a hydration
@@ -41,9 +49,10 @@ export function TrendChart({ data, color = '#8636e8' }: { data: { date: string; 
           <YAxis tick={{ fontSize: 11, fill: '#9ba1c6' }} axisLine={false} tickLine={false} width={30} allowDecimals={false} />
           <Tooltip
             labelFormatter={(d) => formatDate(d as string, locale)}
+            formatter={(value: number) => [formatNumber(value, locale), valueLabel ?? '']}
             contentStyle={{ borderRadius: 12, border: '1px solid #e7e9f2', fontSize: 12 }}
           />
-          <Area type="monotone" dataKey="count" stroke={color} strokeWidth={2.5} fill="url(#trendFill)" />
+          <Area type="monotone" dataKey="count" name={valueLabel} stroke={color} strokeWidth={2.5} fill="url(#trendFill)" />
         </AreaChart>
       </ResponsiveContainer>
     </div>

@@ -45,7 +45,7 @@ export default async function CompanyReportsPage() {
       <div className="mt-6 card">
         <h2 className="text-base font-bold text-ink-900">{t('title')}</h2>
         <div className="mt-4">
-          <TrendChart data={trend} />
+          <TrendChart data={trend} valueLabel={t('totalResponses')} />
         </div>
       </div>
 

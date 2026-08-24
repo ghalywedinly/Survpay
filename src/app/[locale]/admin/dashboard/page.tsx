@@ -33,7 +33,11 @@ export default async function AdminDashboardPage() {
         <div className="card">
           <h2 className="text-base font-bold text-ink-900">{t('userGrowth')}</h2>
           <div className="mt-4">
-            <TrendChart data={growth.map((g) => ({ date: g.date, count: g.cumulative }))} color="#3229f2" />
+            <TrendChart
+              data={growth.map((g) => ({ date: g.date, count: g.cumulative }))}
+              color="#3229f2"
+              valueLabel={t('totalUsers')}
+            />
           </div>
         </div>
         <div className="card">
