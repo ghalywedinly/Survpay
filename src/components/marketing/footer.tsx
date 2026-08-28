@@ -34,7 +34,7 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-ink-100 bg-white">
+    <footer className="border-t-2 border-ink-900 bg-paper">
       <div className="container-app grid gap-10 py-14 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div>
           <Logo size={26} />
@@ -55,7 +55,7 @@ export function Footer() {
           </div>
         ))}
       </div>
-      <div className="border-t border-ink-100 py-6">
+      <div className="border-t-2 border-ink-900 py-6">
         <p className="container-app text-center text-xs text-ink-400">
           © {new Date().getFullYear()} Survpay. {t('rights')}
         </p>

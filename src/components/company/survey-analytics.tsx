@@ -92,19 +92,19 @@ export function SurveyAnalytics({
         <div className="mt-5 grid gap-6 sm:grid-cols-2">
           <div>
             <p className="mb-3 text-xs font-bold uppercase tracking-wide text-ink-400">{t('gender')}</p>
-            <BarList data={Object.entries(demographics.gender).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tGender(k as never)} color="#b32be0" />
+            <BarList data={Object.entries(demographics.gender).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tGender(k as never)} color="#AA52F7" />
           </div>
           <div>
             <p className="mb-3 text-xs font-bold uppercase tracking-wide text-ink-400">{t('age')}</p>
-            <BarList data={Object.entries(demographics.age).map(([k, v]) => ({ key: k, value: v }))} color="#12e5da" />
+            <BarList data={Object.entries(demographics.age).map(([k, v]) => ({ key: k, value: v }))} />
           </div>
           <div>
             <p className="mb-3 text-xs font-bold uppercase tracking-wide text-ink-400">{t('city')}</p>
-            <BarList data={Object.entries(demographics.city).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tCity(k as never)} color="#3229f2" />
+            <BarList data={Object.entries(demographics.city).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tCity(k as never)} />
           </div>
           <div>
             <p className="mb-3 text-xs font-bold uppercase tracking-wide text-ink-400">{t('income')}</p>
-            <BarList data={Object.entries(demographics.income).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tIncome(k as never)} color="#12b35e" />
+            <BarList data={Object.entries(demographics.income).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tIncome(k as never)} color="#20d9d5" />
           </div>
         </div>
       </div>
@@ -117,7 +117,7 @@ export function SurveyAnalytics({
               <p className="text-sm font-bold text-ink-900">{pick(qb.question.prompt, locale)}</p>
               {qb.kind === 'choice' && qb.counts && (
                 <div className="mt-3">
-                  <BarList data={Object.entries(qb.counts).map(([k, v]) => ({ key: k, value: v }))} color="#8636e8" />
+                  <BarList data={Object.entries(qb.counts).map(([k, v]) => ({ key: k, value: v }))} />
                 </div>
               )}
               {qb.kind === 'rating' && (
@@ -133,7 +133,7 @@ export function SurveyAnalytics({
                   <p className="text-xs font-semibold text-ink-400">{t('sampleAnswers')}</p>
                   {qb.samples.length === 0 && <p className="text-sm text-ink-400">{tc('noResults')}</p>}
                   {qb.samples.map((s, si) => (
-                    <p key={si} className="rounded-lg bg-ink-50 px-3 py-2 text-sm text-ink-600">
+                    <p key={si} className="rounded-none border border-ink-100 bg-ink-50 px-3 py-2 text-sm text-ink-600">
                       &ldquo;{s}&rdquo;
                     </p>
                   ))}

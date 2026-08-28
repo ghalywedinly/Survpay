@@ -16,34 +16,19 @@ export function StatCard({
   accent?: 'default' | 'money' | 'brand';
   suffix?: React.ReactNode;
 }) {
-  const iconWrap =
-    accent === 'money'
-      ? 'bg-money-100 text-money-700'
-      : accent === 'brand'
-      ? 'bg-brand-100 text-brand-700'
-      : 'bg-ink-100 text-ink-600';
-
   return (
     <div className="card p-5">
-      <div className="flex items-start justify-between">
-        <p className="text-sm font-medium text-ink-500">{label}</p>
-        {Icon && (
-          <span className={clsx('flex h-9 w-9 items-center justify-center rounded-xl', iconWrap)}>
-            <Icon size={18} />
-          </span>
-        )}
+      <div className="flex items-start justify-between gap-3">
+        <p className="text-xs font-bold uppercase tracking-wide text-ink-500">{label}</p>
+        {/* Icons are ink by default, never filled, never in a coloured circle. */}
+        {Icon && <Icon size={18} className={clsx('shrink-0', accent === 'brand' ? 'text-brand-500' : 'text-ink-400')} />}
       </div>
-      <div className="mt-2 flex items-end gap-2">
+      <div className="mt-2.5 flex items-end gap-2">
         <p className="text-2xl font-extrabold tracking-tight text-ink-900">{value}</p>
         {suffix}
       </div>
       {trend && (
-        <div
-          className={clsx(
-            'mt-2 inline-flex items-center gap-1 text-xs font-semibold',
-            trend.positive ? 'text-money-600' : 'text-red-500'
-          )}
-        >
+        <div className={clsx('mt-2 inline-flex items-center gap-1 text-xs font-bold', trend.positive ? 'text-aqua-800' : 'text-danger-600')}>
           {trend.positive ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
           {trend.value}
         </div>

@@ -49,7 +49,7 @@ export default function SignupPage() {
           type="button"
           onClick={() => setRole('participant')}
           className={clsx(
-            'rounded-2xl border-2 p-4 text-start transition-colors',
+            'rounded-none border-2 p-4 text-start transition-colors',
             role === 'participant' ? 'border-brand-500 bg-brand-50' : 'border-ink-100 bg-white hover:border-ink-200'
           )}
         >
@@ -61,7 +61,7 @@ export default function SignupPage() {
           type="button"
           onClick={() => setRole('company')}
           className={clsx(
-            'rounded-2xl border-2 p-4 text-start transition-colors',
+            'rounded-none border-2 p-4 text-start transition-colors',
             role === 'company' ? 'border-brand-500 bg-brand-50' : 'border-ink-100 bg-white hover:border-ink-200'
           )}
         >
@@ -105,7 +105,7 @@ export default function SignupPage() {
           }
         />
 
-        {error && <p className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700">{error}</p>}
+        {error && <p className="border-2 border-danger-500 bg-danger-50 px-3 py-2 text-sm font-bold text-danger-700">{error}</p>}
 
         <Button type="submit" fullWidth size="lg" variant="secondary" loading={isPending}>
           {t('createAccount')}

@@ -22,27 +22,27 @@ function RowActions({ user }: { user: User }) {
 
   return (
     <div className="relative inline-block">
-      <button onClick={() => setOpen((o) => !o)} className="rounded-lg p-1.5 text-ink-400 hover:bg-ink-100 hover:text-ink-700" disabled={isPending}>
+      <button onClick={() => setOpen((o) => !o)} className="rounded-full p-1.5 text-ink-400 hover:bg-ink-100 hover:text-ink-700" disabled={isPending}>
         <MoreHorizontal size={17} />
       </button>
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute end-0 top-8 z-50 w-48 rounded-xl border border-ink-100 bg-white p-1.5 shadow-2xl">
-            <Link href={`/admin/users/${user.id}` as never} className="flex items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-ink-100">
+          <div className="absolute end-0 top-8 z-50 w-48 rounded-none border-2 border-ink-900 bg-paper p-1.5 shadow-overlay">
+            <Link href={`/admin/users/${user.id}` as never} className="flex items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-ink-700 hover:bg-ink-100">
               <Eye size={15} /> {t('actionView')}
             </Link>
             {user.status === 'active' ? (
               <button
                 onClick={() => startTransition(async () => { await setUserStatusAction(user.id, 'suspended'); setOpen(false); })}
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-red-600 hover:bg-red-50"
+                className="flex w-full items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-danger-600 hover:bg-danger-50"
               >
                 <Ban size={15} /> {t('actionSuspend')}
               </button>
             ) : (
               <button
                 onClick={() => startTransition(async () => { await setUserStatusAction(user.id, 'active'); setOpen(false); })}
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-money-700 hover:bg-money-50"
+                className="flex w-full items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-money-700 hover:bg-money-50"
               >
                 <CheckCircle2 size={15} /> {t('actionActivate')}
               </button>

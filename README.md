@@ -108,9 +108,22 @@ Routes are locale-prefixed (`/ar/...`, `/en/...`) via `next-intl`. Arabic is
 the default locale. RTL is implemented properly, not just visually flipped:
 `dir="rtl"` on `<html>`, Tailwind logical properties (`ps-`, `pe-`, `start-`,
 `end-`) throughout instead of `pl-`/`pr-`/`left-`/`right-`, and the Cairo
-font for Arabic vs. Inter for English. Survey/company content (titles,
+font for Arabic vs. Archivo for English. Survey/company content (titles,
 descriptions, questions, answer options) is stored bilingually; UI chrome is
 translated via `messages/ar.json` and `messages/en.json`.
+
+### Visual identity
+
+The UI follows Survpay's Visual Identity v1.0 (`tailwind.config.ts`,
+`src/app/globals.css`): three brand colours — Survpay Purple `#AA52F7`,
+Signal Blue `#054CF6`, Panel Aqua `#65E8E5` — plus Ink `#14121C`, Ground
+`#F3F2F2` and Paper `#FFFFFF`. The capsule (full radius) is the only rounded
+shape in the system — buttons, tags, avatars, and survey-answer options;
+every other surface is square with a hard 2px ink rule instead of a shadow.
+Typography is Archivo (Latin) and Cairo (Arabic), numerals render in Western
+Arabic digits even under the Arabic locale (`lib/format.ts`), and the S-mark
+(`components/brand/logo.tsx`) is built from three solid capsule segments —
+never a gradient.
 
 ## Project structure
 

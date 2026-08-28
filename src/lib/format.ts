@@ -1,9 +1,20 @@
 import { Locale } from './types';
 
+// Digit rule (Typography · Data language): "Western Arabic (0-9) in charts,
+// tables and dashboards." Survpay's Arabic UI is overwhelmingly dashboard
+// and data surfaces, so every numeral in the app — balances, dates, counts,
+// relative time — renders in Western digits via the `-u-nu-latn` Unicode
+// extension, even under the `ar-SA` locale (which otherwise defaults to
+// Eastern Arabic-Indic digits). `-u-ca-gregory` also pins the Gregorian
+// calendar: `ar-SA` defaults to Hijri per CLDR, and Node's ICU and the
+// browser's ICU don't always agree on that default, which would otherwise
+// produce a server/client hydration mismatch.
+const AR_LOCALE = 'ar-SA-u-ca-gregory-nu-latn';
+
 export function formatSar(amount: number, locale: Locale = 'en', withSign = false) {
   const sign = withSign && amount > 0 ? '+' : '';
   const abs = Math.abs(amount);
-  const formatted = abs.toLocaleString(locale === 'ar' ? 'ar-SA' : 'en-US', {
+  const formatted = abs.toLocaleString(locale === 'ar' ? AR_LOCALE : 'en-US', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
@@ -13,19 +24,12 @@ export function formatSar(amount: number, locale: Locale = 'en', withSign = fals
 }
 
 export function formatNumber(value: number, locale: Locale = 'en') {
-  return value.toLocaleString(locale === 'ar' ? 'ar-SA' : 'en-US');
+  return value.toLocaleString(locale === 'ar' ? AR_LOCALE : 'en-US');
 }
-
-// `ar-SA` defaults to the Hijri (islamic-umalqura) calendar per CLDR, and
-// Node's ICU and the browser's ICU don't always agree on that default —
-// which produces a server/client hydration mismatch (one renders a
-// Gregorian date, the other Hijri). Force the Gregorian calendar explicitly
-// via the `-u-ca-gregory` Unicode extension so both sides always agree.
-const AR_DATE_LOCALE = 'ar-SA-u-ca-gregory';
 
 export function formatDate(date: string | Date, locale: Locale = 'en') {
   const d = typeof date === 'string' ? new Date(date) : date;
-  return d.toLocaleDateString(locale === 'ar' ? AR_DATE_LOCALE : 'en-US', {
+  return d.toLocaleDateString(locale === 'ar' ? AR_LOCALE : 'en-US', {
     month: 'short',
     day: 'numeric',
     year: 'numeric',
@@ -34,7 +38,7 @@ export function formatDate(date: string | Date, locale: Locale = 'en') {
 
 export function formatDateTime(date: string | Date, locale: Locale = 'en') {
   const d = typeof date === 'string' ? new Date(date) : date;
-  return d.toLocaleString(locale === 'ar' ? AR_DATE_LOCALE : 'en-US', {
+  return d.toLocaleString(locale === 'ar' ? AR_LOCALE : 'en-US', {
     month: 'short',
     day: 'numeric',
     hour: 'numeric',
@@ -45,7 +49,7 @@ export function formatDateTime(date: string | Date, locale: Locale = 'en') {
 export function timeAgo(date: string | Date, locale: Locale = 'en') {
   const d = typeof date === 'string' ? new Date(date) : date;
   const seconds = Math.floor((Date.now() - d.getTime()) / 1000);
-  const rtf = new Intl.RelativeTimeFormat(locale === 'ar' ? 'ar' : 'en', { numeric: 'auto' });
+  const rtf = new Intl.RelativeTimeFormat(locale === 'ar' ? 'ar-SA-u-nu-latn' : 'en', { numeric: 'auto' });
   const divisions: [number, Intl.RelativeTimeFormatUnit][] = [
     [60, 'seconds'],
     [60, 'minutes'],

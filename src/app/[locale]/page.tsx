@@ -62,65 +62,60 @@ export default async function LandingPage() {
     <>
       <Navbar />
       <main>
-        {/* HERO */}
-        <div className="relative overflow-hidden bg-brand-radial">
-          <div className="absolute inset-0 bg-hero-glow" />
-          <Section className="relative py-20 sm:py-28">
-            <div className="grid items-center gap-14 lg:grid-cols-2">
-              <div className="animate-fade-up">
-                <Eyebrow>{t('hero.eyebrow')}</Eyebrow>
-                <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                  {t('hero.headline')}
-                </h1>
-                <p className="mt-5 max-w-lg text-balance text-lg leading-relaxed text-ink-200">{t('hero.subheadline')}</p>
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <Link href="/signup?role=participant">
-                    <Button size="lg" variant="secondary" fullWidth icon={<ArrowRight size={18} className="flip-rtl" />}>
-                      {t('hero.ctaPrimary')}
-                    </Button>
-                  </Link>
-                  <Link href="/signup?role=company">
-                    <Button size="lg" variant="outline" fullWidth className="border-white/20 bg-white/5 text-white hover:bg-white/10">
-                      {t('hero.ctaSecondary')}
-                    </Button>
-                  </Link>
-                </div>
-                <p className="mt-5 text-sm text-ink-300">{t('hero.trustNote')}</p>
+        {/* HERO — instrument, not personality: ground, ink, one purple field. */}
+        <Section className="!pb-16 !pt-16 sm:!pt-20">
+          <div className="grid items-center gap-14 lg:grid-cols-2">
+            <div>
+              <Eyebrow>{t('hero.eyebrow')}</Eyebrow>
+              <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.1] tracking-tight text-ink-900 sm:text-5xl lg:text-6xl">
+                {t('hero.headline')}
+              </h1>
+              <p className="mt-5 max-w-lg text-balance text-lg leading-relaxed text-ink-600">{t('hero.subheadline')}</p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link href="/signup?role=participant">
+                  <Button size="lg" variant="secondary" fullWidth icon={<ArrowRight size={18} className="flip-rtl" />}>
+                    {t('hero.ctaPrimary')}
+                  </Button>
+                </Link>
+                <Link href="/signup?role=company">
+                  <Button size="lg" variant="outline" fullWidth>
+                    {t('hero.ctaSecondary')}
+                  </Button>
+                </Link>
               </div>
+              <p className="mt-5 text-sm text-ink-500">{t('hero.trustNote')}</p>
+            </div>
 
-              <div className="animate-fade-up [animation-delay:150ms]">
-                <div className="relative mx-auto max-w-md rounded-2xl border border-white/10 bg-white/[0.06] p-5 shadow-2xl backdrop-blur-xl sm:p-6">
-                  <p className="text-sm font-semibold text-ink-300">{t('hero.dashboardTitle')}</p>
-                  <div className="mt-4 rounded-2xl bg-gradient-to-br from-money-500 to-money-700 p-5 text-white">
-                    <p className="text-xs font-medium text-money-100">{t('hero.availableBalance')}</p>
-                    <p className="mt-1 text-3xl font-extrabold tracking-tight">{formatSar(demo.balanceAvailable, locale)}</p>
-                  </div>
-                  <div className="mt-4 grid grid-cols-2 gap-3">
-                    <div className="rounded-xl bg-white/[0.07] p-4">
-                      <p className="text-xs font-medium text-ink-300">{t('hero.completedSurveys')}</p>
-                      <p className="mt-1 text-xl font-bold text-white">{formatNumber(demo.surveysCompleted, locale)}</p>
-                    </div>
-                    <div className="rounded-xl bg-white/[0.07] p-4">
-                      <p className="text-xs font-medium text-ink-300">{t('hero.totalEarnings')}</p>
-                      <p className="mt-1 text-xl font-bold text-white">{formatSar(demo.totalEarned, locale)}</p>
-                    </div>
-                  </div>
-                  <div className="mt-3 flex items-center justify-between rounded-xl bg-white/[0.07] p-4">
-                    <span className="text-xs font-medium text-ink-300">{t('hero.availableSurveys')}</span>
-                    <span className="text-lg font-bold text-white">{formatNumber(availableSurveysCount, locale)}+</span>
-                  </div>
+            <div className="mx-auto w-full max-w-md rounded-none border-2 border-ink-900 bg-paper p-5 sm:p-6">
+              <p className="text-xs font-bold uppercase tracking-wide text-ink-500">{t('hero.dashboardTitle')}</p>
+              <div className="mt-4 rounded-none bg-aqua-500 p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-ink-900/70">{t('hero.availableBalance')}</p>
+                <p className="mt-1 text-3xl font-extrabold tracking-tight text-ink-900">{formatSar(demo.balanceAvailable, locale)}</p>
+              </div>
+              <div className="mt-4 grid grid-cols-2 gap-px bg-ink-200">
+                <div className="bg-paper p-4">
+                  <p className="text-xs font-bold uppercase tracking-wide text-ink-500">{t('hero.completedSurveys')}</p>
+                  <p className="mt-1 text-xl font-bold text-ink-900">{formatNumber(demo.surveysCompleted, locale)}</p>
                 </div>
+                <div className="bg-paper p-4">
+                  <p className="text-xs font-bold uppercase tracking-wide text-ink-500">{t('hero.totalEarnings')}</p>
+                  <p className="mt-1 text-xl font-bold text-ink-900">{formatSar(demo.totalEarned, locale)}</p>
+                </div>
+              </div>
+              <div className="mt-px flex items-center justify-between border-t-2 border-ink-900 bg-paper pt-4">
+                <span className="text-xs font-bold uppercase tracking-wide text-ink-500">{t('hero.availableSurveys')}</span>
+                <span className="text-lg font-bold text-ink-900">{formatNumber(availableSurveysCount, locale)}+</span>
               </div>
             </div>
-          </Section>
-        </div>
+          </div>
+        </Section>
 
         {/* LOGOS */}
         <Section className="!py-10">
-          <p className="text-center text-xs font-semibold uppercase tracking-wide text-ink-400">{t('logos.title')}</p>
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-70 grayscale">
+          <p className="text-center text-xs font-bold uppercase tracking-wide text-ink-400">{t('logos.title')}</p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
             {COMPANY_LOGOS.map((name) => (
-              <span key={name} className="text-lg font-extrabold text-ink-400">
+              <span key={name} className="text-lg font-extrabold text-ink-300">
                 {name}
               </span>
             ))}
@@ -135,9 +130,9 @@ export default async function LandingPage() {
           </div>
           <div className="mt-14 grid gap-6 sm:grid-cols-3">
             {steps.map((s, i) => (
-              <div key={i} className="relative rounded-2xl border border-ink-100 bg-white p-7 shadow-card">
+              <div key={i} className="relative rounded-none border-2 border-ink-900 bg-paper p-7">
                 <span className="text-5xl font-extrabold text-ink-100">{String(i + 1).padStart(2, '0')}</span>
-                <div className="mt-3 flex h-11 w-11 items-center justify-center rounded-xl bg-brand-gradient text-white">
+                <div className="mt-3 flex h-11 w-11 items-center justify-center border-2 border-ink-900 text-ink-900">
                   <s.icon size={20} />
                 </div>
                 <h3 className="mt-4 text-lg font-bold text-ink-900">{s.title}</h3>
@@ -148,7 +143,7 @@ export default async function LandingPage() {
         </Section>
 
         {/* EARN MONEY */}
-        <Section id="earn" className="bg-ink-50">
+        <Section id="earn" className="bg-ground">
           <div className="grid items-center gap-14 lg:grid-cols-2">
             <div>
               <Eyebrow>{tc('getStarted')}</Eyebrow>
@@ -157,8 +152,8 @@ export default async function LandingPage() {
               <div className="mt-8 space-y-6">
                 {earnPoints.map((p, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-money-100 text-money-700">
-                      <p.icon size={18} />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center text-ink-900">
+                      <p.icon size={20} />
                     </div>
                     <div>
                       <h4 className="font-bold text-ink-900">{p.title}</h4>
@@ -189,28 +184,28 @@ export default async function LandingPage() {
           </div>
         </Section>
 
-        {/* FOR COMPANIES */}
+        {/* FOR COMPANIES — knockout on ink, the mark's alternate ground. */}
         <Section id="companies">
           <div className="grid items-center gap-14 lg:grid-cols-2">
-            <div className="order-2 rounded-2xl border border-ink-100 bg-ink-900 p-7 text-white shadow-2xl lg:order-1">
-              <p className="text-sm font-semibold text-ink-300">Nova Retail Group</p>
+            <div className="order-2 rounded-none border-2 border-ink-900 bg-ink-900 p-7 text-white lg:order-1">
+              <p className="text-sm font-bold text-ink-300">Nova Retail Group</p>
               <h4 className="mt-1 text-xl font-bold">Saudi Consumer Shopping Habits</h4>
-              <div className="mt-5 grid grid-cols-3 gap-3 text-center">
-                <div className="rounded-xl bg-white/5 p-3">
+              <div className="mt-5 grid grid-cols-3 gap-px bg-white/15">
+                <div className="bg-ink-900 p-3 text-center">
                   <p className="text-xl font-extrabold">1,000</p>
-                  <p className="mt-1 text-[11px] text-ink-300">Target</p>
+                  <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-ink-300">Target</p>
                 </div>
-                <div className="rounded-xl bg-white/5 p-3">
+                <div className="bg-ink-900 p-3 text-center">
                   <p className="text-xl font-extrabold">742</p>
-                  <p className="mt-1 text-[11px] text-ink-300">Responses</p>
+                  <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-ink-300">Responses</p>
                 </div>
-                <div className="rounded-xl bg-white/5 p-3">
+                <div className="bg-ink-900 p-3 text-center">
                   <p className="text-xl font-extrabold">74%</p>
-                  <p className="mt-1 text-[11px] text-ink-300">Complete</p>
+                  <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-ink-300">Complete</p>
                 </div>
               </div>
-              <div className="mt-5 h-2 w-full overflow-hidden rounded-full bg-white/10">
-                <div className="h-full w-[74%] rounded-full bg-brand-gradient" />
+              <div className="mt-5 h-2 w-full overflow-hidden bg-white/10">
+                <div className="h-full w-[74%] bg-brand-500" />
               </div>
               <p className="mt-5 text-sm text-ink-300">Estimated eligible participants</p>
               <p className="text-2xl font-extrabold">24,500</p>
@@ -222,8 +217,8 @@ export default async function LandingPage() {
               <div className="mt-8 space-y-6">
                 {companyPoints.map((p, i) => (
                   <div key={i} className="flex gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-700">
-                      <p.icon size={18} />
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center text-brand-500">
+                      <p.icon size={20} />
                     </div>
                     <div>
                       <h4 className="font-bold text-ink-900">{p.title}</h4>
@@ -242,7 +237,7 @@ export default async function LandingPage() {
         </Section>
 
         {/* MARKETPLACE PREVIEW */}
-        <Section className="bg-ink-50">
+        <Section className="bg-ground">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">{t('marketplace.title')}</h2>
@@ -282,8 +277,8 @@ export default async function LandingPage() {
           </div>
           <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {whyCards.map((c, i) => (
-              <div key={i} className="rounded-2xl border border-ink-100 bg-white p-6 shadow-card">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-ink-900 text-white">
+              <div key={i} className="rounded-none border-2 border-ink-900 bg-paper p-6">
+                <div className="flex h-10 w-10 items-center justify-center bg-ink-900 text-white">
                   <c.icon size={18} />
                 </div>
                 <h4 className="mt-4 font-bold text-ink-900">{c.title}</h4>
@@ -293,13 +288,13 @@ export default async function LandingPage() {
           </div>
         </Section>
 
-        {/* TESTIMONIALS */}
+        {/* TESTIMONIALS — knockout on ink. */}
         <Section className="bg-ink-900">
           <h2 className="text-center text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{t('testimonials.title')}</h2>
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
             {testimonials.map((tm, i) => (
-              <div key={i} className="rounded-2xl border border-white/10 bg-white/[0.05] p-6">
-                <div className="flex gap-0.5 text-brand-cyan">
+              <div key={i} className="rounded-none border-2 border-white/20 p-6">
+                <div className="flex gap-0.5 text-aqua-500">
                   {[...Array(5)].map((_, j) => (
                     <Star key={j} size={14} fill="currentColor" strokeWidth={0} />
                   ))}
@@ -316,10 +311,10 @@ export default async function LandingPage() {
         <Section id="faq">
           <div className="mx-auto max-w-3xl">
             <h2 className="text-center text-3xl font-extrabold tracking-tight text-ink-900 sm:text-4xl">{t('faq.title')}</h2>
-            <div className="mt-10 divide-y divide-ink-100 rounded-2xl border border-ink-100 bg-white">
+            <div className="mt-10 divide-y-2 divide-ink-900 rounded-none border-2 border-ink-900 bg-paper">
               {faqs.map((f, i) => (
-                <details key={i} className="group px-6 py-5 open:bg-ink-50/50">
-                  <summary className="flex cursor-pointer list-none items-center justify-between font-semibold text-ink-900">
+                <details key={i} className="group px-6 py-5 open:bg-ink-50">
+                  <summary className="flex cursor-pointer list-none items-center justify-between font-bold text-ink-900">
                     {f.q}
                     <span className="ms-4 shrink-0 text-ink-400 transition-transform group-open:rotate-45">+</span>
                   </summary>
@@ -330,28 +325,28 @@ export default async function LandingPage() {
           </div>
         </Section>
 
-        {/* CTA */}
-        <Section className="bg-brand-radial">
-          <div className="relative overflow-hidden rounded-3xl">
-            <div className="absolute inset-0 bg-hero-glow" />
-            <div className="relative flex flex-col items-center px-6 py-16 text-center">
-              <h2 className="max-w-2xl text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{t('cta.title')}</h2>
-              <p className="mt-4 max-w-xl text-balance text-lg text-ink-200">{t('cta.subtitle')}</p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="/signup?role=participant">
-                  <Button size="lg" variant="secondary" icon={<ArrowRight size={18} className="flip-rtl" />}>
-                    {t('cta.primary')}
-                  </Button>
-                </Link>
-                <Link href="/signup?role=company">
-                  <Button size="lg" variant="outline" className="border-white/20 bg-white/5 text-white hover:bg-white/10">
-                    {t('cta.secondary')}
-                  </Button>
-                </Link>
-              </div>
+        {/* CTA — the last word, ink knockout. */}
+        <Section className="bg-ink-900">
+          <div className="flex flex-col items-center px-6 py-8 text-center">
+            <h2 className="max-w-2xl text-balance text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{t('cta.title')}</h2>
+            <p className="mt-4 max-w-xl text-balance text-lg text-ink-300">{t('cta.subtitle')}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/signup?role=participant">
+                <Button size="lg" variant="secondary" icon={<ArrowRight size={18} className="flip-rtl" />}>
+                  {t('cta.primary')}
+                </Button>
+              </Link>
+              <Link href="/signup?role=company">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  {t('cta.secondary')}
+                </Button>
+              </Link>
             </div>
           </div>
         </Section>
+
+        {/* The closing device — purple, blue, aqua, ink at 1:1:1:3. Appears once. */}
+        <div className="three-colour-bar h-1.5 w-full" />
       </main>
       <Footer />
     </>

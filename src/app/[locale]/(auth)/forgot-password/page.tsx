@@ -24,7 +24,7 @@ export default function ForgotPasswordPage() {
   if (sent) {
     return (
       <div className="text-center">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-money-100 text-money-700">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center border-2 border-ink-900 bg-aqua-500 text-ink-900">
           <MailCheck size={26} />
         </div>
         <h1 className="mt-4 text-xl font-extrabold text-ink-900">{t('resetPassword')}</h1>

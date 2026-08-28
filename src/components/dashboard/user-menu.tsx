@@ -33,12 +33,12 @@ export function UserMenu({
 
   return (
     <div className="relative" ref={ref}>
-      <button onClick={() => setOpen((o) => !o)} className="flex items-center gap-2 rounded-xl p-1 pe-2 hover:bg-ink-100">
+      <button onClick={() => setOpen((o) => !o)} className="flex items-center gap-2 rounded-full p-1 pe-2 hover:bg-ink-100">
         <Avatar name={name} color={avatarColor} size={32} />
         <ChevronDown size={14} className="hidden text-ink-400 sm:block" />
       </button>
       {open && (
-        <div className="absolute end-0 top-12 z-50 w-64 animate-fade-in rounded-2xl border border-ink-100 bg-white p-2 shadow-2xl">
+        <div className="absolute end-0 top-12 z-50 w-64 animate-fade-in rounded-none border-2 border-ink-900 bg-paper p-2 shadow-overlay">
           <div className="flex items-center gap-3 px-2 py-2">
             <Avatar name={name} color={avatarColor} size={38} />
             <div className="min-w-0">
@@ -54,7 +54,7 @@ export function UserMenu({
                 key={l.href}
                 href={l.href as never}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-3 rounded-xl px-2.5 py-2.5 text-sm font-semibold text-ink-600 hover:bg-ink-100 hover:text-ink-900"
+                className="flex items-center gap-3 rounded-none px-2.5 py-2.5 text-sm font-bold text-ink-600 hover:bg-ink-100 hover:text-ink-900"
               >
                 <Icon size={16} className="text-ink-400" />
                 {l.label}
@@ -65,7 +65,7 @@ export function UserMenu({
           <form action={logoutAction}>
             <button
               type="submit"
-              className="flex w-full items-center gap-3 rounded-xl px-2.5 py-2.5 text-sm font-semibold text-red-600 hover:bg-red-50"
+              className="flex w-full items-center gap-3 rounded-none px-2.5 py-2.5 text-sm font-bold text-danger-600 hover:bg-danger-50"
             >
               <LogOut size={16} />
               {logoutLabel}

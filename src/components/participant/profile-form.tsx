@@ -174,8 +174,8 @@ export function ProfileForm({ profile, name }: { profile: ParticipantProfile; na
               key={key}
               onClick={() => toggleInterest(key)}
               className={clsx(
-                'rounded-full border-2 px-4 py-2 text-sm font-semibold transition-colors',
-                form.interests.includes(key) ? 'border-brand-500 bg-brand-50 text-brand-700' : 'border-ink-100 text-ink-500 hover:border-ink-200'
+                'rounded-full border-2 px-4 py-2 text-sm font-bold transition-colors',
+                form.interests.includes(key) ? 'border-brand-500 bg-brand-500 text-white' : 'border-ink-200 text-ink-500 hover:border-ink-900'
               )}
             >
               {tInterest(key)}
@@ -196,8 +196,8 @@ export function ProfileForm({ profile, name }: { profile: ParticipantProfile; na
                 key={key}
                 onClick={() => toggleDevice(key)}
                 className={clsx(
-                  'flex flex-col items-center gap-2 rounded-xl border-2 py-4 text-sm font-semibold transition-colors',
-                  active ? 'border-brand-500 bg-brand-50 text-brand-700' : 'border-ink-100 text-ink-500 hover:border-ink-200'
+                  'flex flex-col items-center gap-2 rounded-none border-2 py-4 text-sm font-bold transition-colors',
+                  active ? 'border-brand-500 bg-brand-500 text-white' : 'border-ink-200 text-ink-500 hover:border-ink-900'
                 )}
               >
                 <Icon size={20} />

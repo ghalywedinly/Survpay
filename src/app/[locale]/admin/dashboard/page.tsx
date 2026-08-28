@@ -35,7 +35,7 @@ export default async function AdminDashboardPage() {
           <div className="mt-4">
             <TrendChart
               data={growth.map((g) => ({ date: g.date, count: g.cumulative }))}
-              color="#3229f2"
+              highlightLastN={2}
               valueLabel={t('totalUsers')}
             />
           </div>
@@ -49,7 +49,7 @@ export default async function AdminDashboardPage() {
                 { key: t('totalRewardsPaid'), value: stats.totalRewardsPaid },
                 { key: t('platformProfit'), value: stats.platformProfit },
               ]}
-              color="#12b35e"
+              color="#0c8d8a"
               formatValue={(v) => formatSar(v, locale)}
             />
           </div>

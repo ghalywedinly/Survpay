@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-en: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-en: 'Archivo', ui-sans-serif, system-ui, sans-serif;
   --font-ar: 'Cairo', ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -12,8 +12,18 @@ html {
 }
 
 body {
-  @apply bg-ink-50 text-ink-900 antialiased;
-  font-feature-settings: 'cv11', 'ss01';
+  @apply bg-ground text-ink-900 antialiased;
+  font-feature-settings: 'cv11', 'ss01', 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+
+/* Arabic setting rules — Cairo needs +20% line-height where Archivo takes
+   1.6, and Arabic is never letterspaced (tracking is 0 at every size). */
+[dir='rtl'] body {
+  line-height: 1.9;
+}
+[dir='rtl'] * {
+  letter-spacing: 0 !important;
 }
 
 [dir='rtl'] .flip-rtl {
@@ -21,7 +31,7 @@ body {
 }
 
 ::selection {
-  background: rgba(179, 43, 224, 0.2);
+  background: rgba(170, 82, 247, 0.22);
 }
 
 .scrollbar-thin::-webkit-scrollbar {
@@ -29,8 +39,7 @@ body {
   width: 6px;
 }
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: rgba(17, 19, 42, 0.15);
-  border-radius: 999px;
+  background: rgba(20, 18, 28, 0.18);
 }
 
 @layer utilities {
@@ -40,7 +49,45 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  /* The instrument surface: zero radius, a hard 2px ink rule, no shadow.
+     Rounded corners exist only on the capsule (buttons, tags, avatars). */
   .card {
-    @apply rounded-2xl border border-ink-100 bg-white shadow-card;
+    @apply rounded-none border-2 border-ink-900 bg-paper;
+  }
+  /* S-Flow — the brand's one decorative pattern: diagonal stripes at the
+     mark's own angle. Page feet, card backs, full-bleed social ground.
+     Never behind body copy. */
+  .s-flow {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      #aa52f7 0px,
+      #aa52f7 22px,
+      #054cf6 22px,
+      #054cf6 44px,
+      #65e8e5 44px,
+      #65e8e5 66px,
+      #f3f2f2 66px,
+      #f3f2f2 96px
+    );
+  }
+  /* The closing device — purple, blue, aqua, ink at 1:1:1:3. Appears once,
+     nowhere else. */
+  .three-colour-bar {
+    background: linear-gradient(
+      to right,
+      #aa52f7 0 16.6%,
+      #054cf6 16.6% 33.3%,
+      #65e8e5 33.3% 50%,
+      #14121c 50% 100%
+    );
+  }
+  [dir='rtl'] .three-colour-bar {
+    background: linear-gradient(
+      to left,
+      #aa52f7 0 16.6%,
+      #054cf6 16.6% 33.3%,
+      #65e8e5 33.3% 50%,
+      #14121c 50% 100%
+    );
   }
 }

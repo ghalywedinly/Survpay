@@ -24,8 +24,8 @@ export function FraudFlagList({ userId, flags, locale }: { userId: string; flags
   return (
     <div className="space-y-3">
       {flags.map((f) => (
-        <div key={f.id} className="flex items-start gap-3 rounded-xl border border-ink-100 p-4">
-          <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-50 text-red-600">
+        <div key={f.id} className="flex items-start gap-3 rounded-none border-2 border-ink-200 p-4">
+          <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-danger-50 text-danger-600">
             <AlertTriangle size={15} />
           </span>
           <div className="min-w-0 flex-1">

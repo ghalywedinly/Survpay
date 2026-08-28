@@ -60,7 +60,7 @@ export default async function CompanyDashboardPage() {
         <div className="card">
           <h2 className="text-base font-bold text-ink-900">{t('responsesOverTime')}</h2>
           <div className="mt-4">
-            <TrendChart data={trend} valueLabel={t('totalResponses')} />
+            <TrendChart data={trend} highlightLastN={2} valueLabel={t('totalResponses')} />
           </div>
         </div>
         <div className="card">

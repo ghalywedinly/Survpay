@@ -13,8 +13,8 @@ export function MobileDrawer({ open, onClose, items }: { open: boolean; onClose:
 
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
-      <div className="absolute inset-0 bg-ink-950/50" onClick={onClose} />
-      <div className="absolute inset-y-0 start-0 w-72 animate-fade-in bg-white p-4 shadow-2xl">
+      <div className="absolute inset-0 bg-ink-900/60" onClick={onClose} />
+      <div className="absolute inset-y-0 start-0 w-72 animate-fade-in border-e-2 border-ink-900 bg-paper p-4 shadow-overlay">
         <div className="flex items-center justify-between px-2 py-2">
           <Logo size={22} />
           <button onClick={onClose} className="rounded-full p-1.5 hover:bg-ink-100">
@@ -31,7 +31,7 @@ export function MobileDrawer({ open, onClose, items }: { open: boolean; onClose:
                 href={item.href as never}
                 onClick={onClose}
                 className={clsx(
-                  'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold',
+                  'flex items-center gap-3 rounded-none px-3 py-2.5 text-sm font-bold',
                   active ? 'bg-ink-900 text-white' : 'text-ink-600 hover:bg-ink-100'
                 )}
               >

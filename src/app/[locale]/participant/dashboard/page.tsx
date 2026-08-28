@@ -57,10 +57,10 @@ export default async function ParticipantDashboardPage() {
       </div>
 
       {completion < 100 && (
-        <div className="mt-6 rounded-2xl border border-brand-200 bg-brand-50/60 p-5 sm:flex sm:items-center sm:justify-between">
+        <div className="mt-6 rounded-none border-2 border-ink-900 bg-brand-50 p-5 sm:flex sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
-            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-gradient text-white">
-              <Sparkles size={18} />
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center text-brand-500">
+              <Sparkles size={20} />
             </span>
             <div>
               <p className="text-sm font-bold text-ink-900">

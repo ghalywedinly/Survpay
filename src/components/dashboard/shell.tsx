@@ -37,7 +37,7 @@ export function DashboardShell({
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-ink-50/60">
+    <div className="min-h-screen bg-ground">
       <Sidebar items={items} homeHref={homeHref} logoutLabel={logoutLabel} footer={sidebarFooter} />
       <MobileDrawer open={drawerOpen} onClose={() => setDrawerOpen(false)} items={items} />
       <div className="lg:ps-64">

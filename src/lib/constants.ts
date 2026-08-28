@@ -13,17 +13,20 @@ import {
 } from 'lucide-react';
 import { InterestKey, DeviceKey, SurveyCategory, IncomeRange, EmploymentStatus, MaritalStatus } from './types';
 
-export const CATEGORY_META: Record<SurveyCategory, { icon: LucideIcon; color: string }> = {
-  shopping: { icon: ShoppingBag, color: '#b32be0' },
-  food: { icon: UtensilsCrossed, color: '#f59e0b' },
-  technology: { icon: Cpu, color: '#3229f2' },
-  finance: { icon: Landmark, color: '#12b35e' },
-  travel: { icon: Plane, color: '#12e5da' },
-  entertainment: { icon: Clapperboard, color: '#ec4899' },
-  healthcare: { icon: HeartPulse, color: '#ef4444' },
-  automotive: { icon: Car, color: '#64748b' },
-  lifestyle: { icon: Sparkles, color: '#8636e8' },
-  other: { icon: Grid3x3, color: '#6871a3' },
+// Icons are ink by default — never filled, never in a coloured circle, never
+// two-tone (Brand elements · Icons). Category is conveyed by icon shape and
+// label alone, not by a rainbow of per-category colours.
+export const CATEGORY_META: Record<SurveyCategory, { icon: LucideIcon }> = {
+  shopping: { icon: ShoppingBag },
+  food: { icon: UtensilsCrossed },
+  technology: { icon: Cpu },
+  finance: { icon: Landmark },
+  travel: { icon: Plane },
+  entertainment: { icon: Clapperboard },
+  healthcare: { icon: HeartPulse },
+  automotive: { icon: Car },
+  lifestyle: { icon: Sparkles },
+  other: { icon: Grid3x3 },
 };
 
 export const SURVEY_CATEGORIES: SurveyCategory[] = [

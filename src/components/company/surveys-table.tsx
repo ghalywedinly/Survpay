@@ -28,23 +28,23 @@ function RowActions({ survey }: { survey: Survey }) {
 
   return (
     <div className="relative inline-block text-start">
-      <button onClick={() => setOpen((o) => !o)} className="rounded-lg p-1.5 text-ink-400 hover:bg-ink-100 hover:text-ink-700" disabled={isPending}>
+      <button onClick={() => setOpen((o) => !o)} className="rounded-full p-1.5 text-ink-400 hover:bg-ink-100 hover:text-ink-700" disabled={isPending}>
         <MoreHorizontal size={17} />
       </button>
       {open && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
-          <div className="absolute end-0 top-8 z-50 w-44 rounded-xl border border-ink-100 bg-white p-1.5 shadow-2xl">
+          <div className="absolute end-0 top-8 z-50 w-44 rounded-none border-2 border-ink-900 bg-paper p-1.5 shadow-overlay">
             <Link
               href={`/company/surveys/${survey.id}` as never}
-              className="flex items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-ink-100"
+              className="flex items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-ink-700 hover:bg-ink-100"
             >
               <Eye size={15} /> {t('actionView')}
             </Link>
             {survey.status === 'draft' && (
               <Link
                 href={`/company/surveys/create?draft=${survey.id}` as never}
-                className="flex items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-ink-100"
+                className="flex items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-ink-700 hover:bg-ink-100"
               >
                 <Pencil size={15} /> {t('actionEdit')}
               </Link>
@@ -52,7 +52,7 @@ function RowActions({ survey }: { survey: Survey }) {
             {survey.status === 'active' && (
               <button
                 onClick={() => startTransition(async () => { await setSurveyStatusAction(survey.id, 'paused'); setOpen(false); })}
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-ink-100"
+                className="flex w-full items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-ink-700 hover:bg-ink-100"
               >
                 <Pause size={15} /> {t('actionPause')}
               </button>
@@ -60,18 +60,18 @@ function RowActions({ survey }: { survey: Survey }) {
             {survey.status === 'paused' && (
               <button
                 onClick={() => startTransition(async () => { await setSurveyStatusAction(survey.id, 'active'); setOpen(false); })}
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-ink-100"
+                className="flex w-full items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-ink-700 hover:bg-ink-100"
               >
                 <Play size={15} /> {t('actionResume')}
               </button>
             )}
             <button
               onClick={() => startTransition(async () => { await duplicateSurveyAction(survey.id); setOpen(false); })}
-              className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-ink-100"
+              className="flex w-full items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-ink-700 hover:bg-ink-100"
             >
               <Copy size={15} /> {t('actionDuplicate')}
             </button>
-            <button className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-sm font-medium text-ink-700 hover:bg-ink-100">
+            <button className="flex w-full items-center gap-2 rounded-none px-2.5 py-2 text-sm font-bold text-ink-700 hover:bg-ink-100">
               <Download size={15} /> {t('actionExport')}
             </button>
           </div>

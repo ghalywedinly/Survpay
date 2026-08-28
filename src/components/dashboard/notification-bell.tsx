@@ -37,18 +37,18 @@ export function NotificationBell({
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((o) => !o)}
-        className="relative flex h-10 w-10 items-center justify-center rounded-xl text-ink-500 transition-colors hover:bg-ink-100 hover:text-ink-900"
+        className="relative flex h-10 w-10 items-center justify-center rounded-full text-ink-500 transition-colors hover:bg-ink-100 hover:text-ink-900"
         aria-label="Notifications"
       >
         <Bell size={19} />
         {unreadCount > 0 && (
-          <span className="absolute end-1.5 top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
+          <span className="absolute end-1.5 top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-danger-500 px-1 text-[10px] font-bold text-white">
             {unreadCount > 9 ? '9+' : unreadCount}
           </span>
         )}
       </button>
       {open && (
-        <div className="absolute end-0 top-12 z-50 w-80 animate-fade-in rounded-2xl border border-ink-100 bg-white p-2 shadow-2xl sm:w-96">
+        <div className="absolute end-0 top-12 z-50 w-80 animate-fade-in rounded-none border-2 border-ink-900 bg-paper p-2 shadow-overlay sm:w-96">
           <div className="max-h-96 overflow-y-auto">
             {notifications.length === 0 && <p className="px-3 py-8 text-center text-sm text-ink-400">{t('noResults')}</p>}
             {notifications.slice(0, 6).map((n) => {
@@ -57,7 +57,7 @@ export function NotificationBell({
               return (
                 <div
                   key={n.id}
-                  className={clsx('flex gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-ink-50', !n.read && 'bg-brand-50/60')}
+                  className={clsx('flex gap-3 rounded-none px-3 py-3 transition-colors hover:bg-ink-50', !n.read && 'bg-brand-50/60')}
                 >
                   <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink-100 text-ink-600">
                     <Icon size={16} />
@@ -75,7 +75,7 @@ export function NotificationBell({
           <Link
             href={seeAllHref as never}
             onClick={() => setOpen(false)}
-            className="mt-1 block rounded-xl px-3 py-2.5 text-center text-sm font-semibold text-brand-700 hover:bg-brand-50"
+            className="mt-1 block rounded-full px-3 py-2.5 text-center text-sm font-bold text-brand-700 hover:bg-brand-50"
           >
             {t('seeAll')}
           </Link>

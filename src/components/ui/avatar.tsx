@@ -1,6 +1,6 @@
 export function Avatar({
   name,
-  color = '#8636e8',
+  color = '#AA52F7',
   size = 36,
 }: {
   name: string;

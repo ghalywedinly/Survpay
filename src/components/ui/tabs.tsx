@@ -14,14 +14,14 @@ export function Tabs({
   className?: string;
 }) {
   return (
-    <div className={clsx('scrollbar-thin flex gap-1 overflow-x-auto rounded-xl bg-ink-100 p-1', className)}>
+    <div className={clsx('scrollbar-thin flex gap-1 overflow-x-auto rounded-full bg-ink-100 p-1', className)}>
       {tabs.map((tab) => (
         <button
           key={tab.value}
           onClick={() => onChange(tab.value)}
           className={clsx(
-            'flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-lg px-3.5 py-2 text-sm font-semibold transition-colors',
-            value === tab.value ? 'bg-white text-ink-900 shadow-sm' : 'text-ink-500 hover:text-ink-800'
+            'flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-bold transition-colors',
+            value === tab.value ? 'bg-ink-900 text-white' : 'text-ink-500 hover:text-ink-800'
           )}
         >
           {tab.label}

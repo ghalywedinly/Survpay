@@ -29,13 +29,13 @@ export default async function AdminReportsPage() {
       <div className="mt-6 card">
         <h2 className="text-base font-bold text-ink-900">{tDash('totalResponses')}</h2>
         <div className="mt-4">
-          <TrendChart data={trend} color="#12b35e" valueLabel={tDash('totalResponses')} />
+          <TrendChart data={trend} valueLabel={tDash('totalResponses')} />
         </div>
       </div>
 
       <div className="mt-6 card">
         <h2 className="mb-4 text-base font-bold text-ink-900">{t('surveyVolumeByCategory')}</h2>
-        <BarList data={Object.entries(categories).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tCat(k as never)} color="#8636e8" />
+        <BarList data={Object.entries(categories).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tCat(k as never)} />
       </div>
     </div>
   );

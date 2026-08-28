@@ -90,20 +90,20 @@ export function SurveyRunner({ survey, locale }: { survey: Survey; locale: Local
   if (result) {
     return (
       <div className="fixed inset-0 z-[70] flex flex-col bg-white">
-        <div className="flex h-16 items-center justify-center border-b border-ink-100">
+        <div className="flex h-16 items-center justify-center border-b-2 border-ink-900">
           <Logo size={24} />
         </div>
         <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
-          <div className="flex h-20 w-20 animate-pop items-center justify-center rounded-full bg-money-100 text-money-600">
+          <div className="flex h-20 w-20 animate-pop items-center justify-center rounded-full bg-aqua-500 text-ink-900">
             <PartyPopper size={36} />
           </div>
           <h1 className="mt-6 text-2xl font-extrabold text-ink-900">{t('completedTitle')} 🎉</h1>
           <p className="mt-2 text-lg font-semibold text-ink-700">
             {result.pending ? t('completedPendingBody', { amount: formatSar(result.reward, locale) }) : t('completedBody', { amount: formatSar(result.reward, locale) })}
           </p>
-          <div className="mt-6 rounded-2xl bg-ink-50 px-6 py-4">
-            <p className="text-xs font-medium text-ink-500">{t('newBalance')}</p>
-            <p className="mt-1 text-2xl font-extrabold text-money-700">{formatSar(result.newBalance, locale)}</p>
+          <div className="mt-6 rounded-none bg-aqua-500 px-8 py-5">
+            <p className="text-xs font-bold uppercase tracking-wide text-ink-900/70">{t('newBalance')}</p>
+            <p className="mt-1 text-2xl font-extrabold text-ink-900">{formatSar(result.newBalance, locale)}</p>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/participant/surveys">
@@ -148,18 +148,12 @@ export function SurveyRunner({ survey, locale }: { survey: Survey; locale: Local
                     key={i}
                     onClick={() => setAnswer(opt.en)}
                     className={clsx(
-                      'flex w-full items-center gap-3 rounded-xl border-2 px-4 py-3.5 text-start text-sm font-semibold transition-colors',
-                      currentAnswer === opt.en ? 'border-brand-500 bg-brand-50 text-ink-900' : 'border-ink-100 bg-white text-ink-700 hover:border-ink-200'
+                      'flex min-h-11 w-full items-center rounded-full border-2 px-5 py-3 text-start text-sm font-bold transition-colors',
+                      currentAnswer === opt.en
+                        ? 'border-brand-500 bg-brand-500 text-white'
+                        : 'border-ink-200 bg-paper text-ink-900 hover:border-ink-900'
                     )}
                   >
-                    <span
-                      className={clsx(
-                        'flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2',
-                        currentAnswer === opt.en ? 'border-brand-500' : 'border-ink-300'
-                      )}
-                    >
-                      {currentAnswer === opt.en && <span className="h-2.5 w-2.5 rounded-full bg-brand-500" />}
-                    </span>
                     {pick(opt, locale)}
                   </button>
                 ))}
@@ -175,8 +169,10 @@ export function SurveyRunner({ survey, locale }: { survey: Survey; locale: Local
                       key={val}
                       onClick={() => setAnswer(val)}
                       className={clsx(
-                        'rounded-xl border-2 py-5 text-base font-bold transition-colors',
-                        currentAnswer === val ? 'border-brand-500 bg-brand-50 text-ink-900' : 'border-ink-100 bg-white text-ink-700 hover:border-ink-200'
+                        'min-h-11 rounded-full border-2 py-5 text-base font-bold transition-colors',
+                        currentAnswer === val
+                          ? 'border-brand-500 bg-brand-500 text-white'
+                          : 'border-ink-200 bg-paper text-ink-900 hover:border-ink-900'
                       )}
                     >
                       {label}
@@ -196,18 +192,10 @@ export function SurveyRunner({ survey, locale }: { survey: Survey; locale: Local
                       key={i}
                       onClick={() => setAnswer(checked ? arr.filter((v) => v !== opt.en) : [...arr, opt.en])}
                       className={clsx(
-                        'flex w-full items-center gap-3 rounded-xl border-2 px-4 py-3.5 text-start text-sm font-semibold transition-colors',
-                        checked ? 'border-brand-500 bg-brand-50 text-ink-900' : 'border-ink-100 bg-white text-ink-700 hover:border-ink-200'
+                        'flex min-h-11 w-full items-center rounded-full border-2 px-5 py-3 text-start text-sm font-bold transition-colors',
+                        checked ? 'border-brand-500 bg-brand-500 text-white' : 'border-ink-200 bg-paper text-ink-900 hover:border-ink-900'
                       )}
                     >
-                      <span
-                        className={clsx(
-                          'flex h-5 w-5 shrink-0 items-center justify-center rounded-md border-2',
-                          checked ? 'border-brand-500 bg-brand-500 text-white' : 'border-ink-300'
-                        )}
-                      >
-                        {checked && '✓'}
-                      </span>
                       {pick(opt, locale)}
                     </button>
                   );
@@ -223,8 +211,8 @@ export function SurveyRunner({ survey, locale }: { survey: Survey; locale: Local
                       key={n}
                       onClick={() => setAnswer(n)}
                       className={clsx(
-                        'flex h-14 w-14 flex-col items-center justify-center gap-0.5 rounded-2xl border-2 font-bold transition-colors sm:h-16 sm:w-16',
-                        Number(currentAnswer) === n ? 'border-brand-500 bg-brand-50 text-brand-700' : 'border-ink-100 text-ink-500 hover:border-ink-200'
+                        'flex h-14 w-14 flex-col items-center justify-center gap-0.5 rounded-full border-2 font-bold transition-colors sm:h-16 sm:w-16',
+                        Number(currentAnswer) === n ? 'border-brand-500 bg-brand-500 text-white' : 'border-ink-200 text-ink-500 hover:border-ink-900'
                       )}
                     >
                       <Star size={16} fill={Number(currentAnswer) >= n ? 'currentColor' : 'none'} />
@@ -246,11 +234,11 @@ export function SurveyRunner({ survey, locale }: { survey: Survey; locale: Local
             )}
           </div>
 
-          {showRequired && <p className="mt-3 text-sm font-semibold text-red-600">{t('requiredNotice')}</p>}
+          {showRequired && <p className="mt-3 text-sm font-bold text-danger-600">{t('requiredNotice')}</p>}
         </div>
       </div>
 
-      <div className="flex items-center justify-between border-t border-ink-100 px-4 py-4 sm:px-6">
+      <div className="flex items-center justify-between border-t-2 border-ink-900 px-4 py-4 sm:px-6">
         <Button variant="outline" onClick={goBack} disabled={index === 0}>
           {t('back')}
         </Button>

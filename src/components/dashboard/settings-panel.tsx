@@ -50,11 +50,11 @@ export function SettingsPanel({ email }: { email: string }) {
         </div>
       </div>
 
-      <div className="card border-red-100 bg-red-50/40">
-        <h3 className="flex items-center gap-2 text-base font-bold text-red-700">
+      <div className="card border-danger-100 bg-danger-50/40">
+        <h3 className="flex items-center gap-2 text-base font-bold text-danger-700">
           <AlertTriangle size={17} /> {t('dangerZone')}
         </h3>
-        <p className="mt-2 text-sm text-red-700/80">{t('deactivateBody')}</p>
+        <p className="mt-2 text-sm text-danger-700/80">{t('deactivateBody')}</p>
         <Button variant="danger" size="sm" className="mt-4" disabled>
           {t('deactivate')}
         </Button>

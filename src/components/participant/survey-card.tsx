@@ -33,18 +33,13 @@ export function SurveyCard({
   const card = (
     <Comp
       {...(href ? { href } : {})}
-      className="group flex h-full flex-col rounded-2xl border border-ink-100 bg-white p-5 shadow-card transition-all hover:-translate-y-0.5 hover:shadow-glow"
+      className="group flex h-full flex-col rounded-none border-2 border-ink-900 bg-paper p-5 transition-colors hover:bg-ink-50"
     >
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-2.5">
-          <span
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
-            style={{ backgroundColor: `${meta.color}1a`, color: meta.color }}
-          >
-            <Icon size={18} />
-          </span>
+          <Icon size={18} className="shrink-0 text-ink-400" />
           <div>
-            <p className="text-xs font-semibold text-ink-400">{categoryLabel}</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-ink-400">{categoryLabel}</p>
             {companyName && <p className="text-xs font-medium text-ink-400">{companyName}</p>}
           </div>
         </div>
@@ -63,8 +58,8 @@ export function SurveyCard({
         </span>
       </div>
 
-      <div className="mt-5 flex items-center justify-between border-t border-ink-100 pt-4">
-        <span className="text-sm font-bold text-money-600">{formatSar(survey.rewardPerResponse, locale)}</span>
+      <div className="mt-5 flex items-center justify-between border-t-2 border-ink-900 pt-4">
+        <span className="text-sm font-bold text-aqua-800">{formatSar(survey.rewardPerResponse, locale)}</span>
         <span className="inline-flex items-center gap-1 text-sm font-bold text-ink-900 transition-transform group-hover:translate-x-0.5 rtl:group-hover:-translate-x-0.5">
           {ctaLabel} <ArrowRight size={15} className="flip-rtl" />
         </span>

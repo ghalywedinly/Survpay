@@ -72,7 +72,7 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {error && <p className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700">{error}</p>}
+        {error && <p className="border-2 border-danger-500 bg-danger-50 px-3 py-2 text-sm font-bold text-danger-700">{error}</p>}
 
         <Button type="submit" fullWidth size="lg" variant="secondary" loading={isPending && !demoPending}>
           {t('signIn')}
@@ -86,14 +86,14 @@ export default function LoginPage() {
         </Link>
       </p>
 
-      <div className="mt-8 rounded-2xl border border-ink-100 bg-ink-50/60 p-4">
+      <div className="mt-8 border-2 border-ink-900 bg-ground p-4">
         <p className="text-xs font-bold uppercase tracking-wide text-ink-400">{t('demoAccounts')}</p>
         <p className="mt-1 text-xs text-ink-500">{t('demoAccountsBody')}</p>
         <div className="mt-3 grid grid-cols-3 gap-2">
           <button
             onClick={() => onDemo('participant')}
             disabled={isPending}
-            className="flex flex-col items-center gap-1.5 rounded-xl border border-ink-200 bg-white py-3 text-xs font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 disabled:opacity-50"
+            className="flex flex-col items-center gap-1.5 rounded-none border-2 border-ink-200 bg-paper py-3 text-xs font-bold text-ink-700 transition-colors hover:border-ink-900 disabled:opacity-50"
           >
             <User size={16} />
             {demoPending === 'participant' ? '…' : t('demoParticipant')}
@@ -101,7 +101,7 @@ export default function LoginPage() {
           <button
             onClick={() => onDemo('company')}
             disabled={isPending}
-            className="flex flex-col items-center gap-1.5 rounded-xl border border-ink-200 bg-white py-3 text-xs font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 disabled:opacity-50"
+            className="flex flex-col items-center gap-1.5 rounded-none border-2 border-ink-200 bg-paper py-3 text-xs font-bold text-ink-700 transition-colors hover:border-ink-900 disabled:opacity-50"
           >
             <Building2 size={16} />
             {demoPending === 'company' ? '…' : t('demoCompany')}
@@ -109,7 +109,7 @@ export default function LoginPage() {
           <button
             onClick={() => onDemo('admin')}
             disabled={isPending}
-            className="flex flex-col items-center gap-1.5 rounded-xl border border-ink-200 bg-white py-3 text-xs font-semibold text-ink-700 transition-colors hover:border-brand-300 hover:bg-brand-50 disabled:opacity-50"
+            className="flex flex-col items-center gap-1.5 rounded-none border-2 border-ink-200 bg-paper py-3 text-xs font-bold text-ink-700 transition-colors hover:border-ink-900 disabled:opacity-50"
           >
             <ShieldCheck size={16} />
             {demoPending === 'admin' ? '…' : t('demoAdmin')}

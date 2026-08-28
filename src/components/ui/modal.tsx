@@ -36,9 +36,9 @@ export function Modal({
 
   return createPortal(
     <div className="fixed inset-0 z-[90] flex items-end justify-center sm:items-center" role="dialog" aria-modal="true">
-      <div className="absolute inset-0 animate-fade-in bg-ink-950/50 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 animate-fade-in bg-ink-900/60" onClick={onClose} />
       <div
-        className={`relative z-10 max-h-[90vh] w-full ${sizeClass} animate-pop overflow-y-auto rounded-t-2xl bg-white p-6 shadow-2xl sm:rounded-2xl`}
+        className={`relative z-10 max-h-[90vh] w-full ${sizeClass} animate-pop overflow-y-auto rounded-none border-2 border-ink-900 bg-paper p-6 shadow-overlay`}
       >
         {title && (
           <div className="mb-4 flex items-center justify-between">

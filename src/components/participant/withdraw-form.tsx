@@ -52,9 +52,9 @@ export function WithdrawForm({ availableBalance, locale }: { availableBalance: n
       <h1 className="text-xl font-extrabold text-ink-900">{t('title')}</h1>
       <p className="mt-1 text-sm text-ink-500">{t('subtitle')}</p>
 
-      <div className="mt-5 rounded-xl bg-money-50 px-4 py-3">
-        <p className="text-xs font-medium text-money-700">{t('availableBalance')}</p>
-        <p className="text-xl font-extrabold text-money-700">{formatSar(availableBalance, locale)}</p>
+      <div className="mt-5 border-2 border-ink-900 bg-aqua-500 px-4 py-3">
+        <p className="text-xs font-bold uppercase tracking-wide text-ink-900/70">{t('availableBalance')}</p>
+        <p className="text-xl font-extrabold text-ink-900">{formatSar(availableBalance, locale)}</p>
       </div>
 
       <form onSubmit={onSubmit} className="mt-6 space-y-5">
@@ -76,8 +76,8 @@ export function WithdrawForm({ availableBalance, locale }: { availableBalance: n
               type="button"
               onClick={() => setMethod('bank_transfer')}
               className={clsx(
-                'flex flex-col items-center gap-1.5 rounded-xl border-2 py-4 text-sm font-semibold transition-colors',
-                method === 'bank_transfer' ? 'border-brand-500 bg-brand-50 text-ink-900' : 'border-ink-100 text-ink-500 hover:border-ink-200'
+                'flex flex-col items-center gap-1.5 rounded-none border-2 py-4 text-sm font-bold transition-colors',
+                method === 'bank_transfer' ? 'border-brand-500 bg-brand-500 text-white' : 'border-ink-200 text-ink-500 hover:border-ink-900'
               )}
             >
               <Landmark size={18} />
@@ -87,8 +87,8 @@ export function WithdrawForm({ availableBalance, locale }: { availableBalance: n
               type="button"
               onClick={() => setMethod('stc_pay')}
               className={clsx(
-                'flex flex-col items-center gap-1.5 rounded-xl border-2 py-4 text-sm font-semibold transition-colors',
-                method === 'stc_pay' ? 'border-brand-500 bg-brand-50 text-ink-900' : 'border-ink-100 text-ink-500 hover:border-ink-200'
+                'flex flex-col items-center gap-1.5 rounded-none border-2 py-4 text-sm font-bold transition-colors',
+                method === 'stc_pay' ? 'border-brand-500 bg-brand-500 text-white' : 'border-ink-200 text-ink-500 hover:border-ink-900'
               )}
             >
               <Smartphone size={18} />
@@ -104,9 +104,9 @@ export function WithdrawForm({ availableBalance, locale }: { availableBalance: n
           placeholder={method === 'bank_transfer' ? 'SA00 0000 0000 0000 0000 0000' : '05XXXXXXXX'}
         />
 
-        {error && <p className="rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700">{error}</p>}
+        {error && <p className="border-2 border-danger-500 bg-danger-50 px-3 py-2 text-sm font-bold text-danger-700">{error}</p>}
 
-        <div className="flex items-start gap-2 rounded-xl bg-ink-50 px-3.5 py-3 text-xs text-ink-500">
+        <div className="flex items-start gap-2 border-2 border-ink-200 bg-ink-50 px-3.5 py-3 text-xs text-ink-500">
           <Info size={14} className="mt-0.5 shrink-0" />
           <p>
             {t('minNotice')} {t('processingNotice')}
@@ -120,7 +120,7 @@ export function WithdrawForm({ availableBalance, locale }: { availableBalance: n
 
       <Modal open={success !== null} onClose={() => setSuccess(null)} title={t('successTitle')} size="sm">
         <div className="text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-money-100 text-money-700">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center border-2 border-ink-900 bg-aqua-500 text-ink-900">
             <CheckCircle2 size={26} />
           </div>
           <p className="mt-4 text-sm text-ink-600">{success !== null && t('successBody', { amount: formatSar(success, locale) })}</p>

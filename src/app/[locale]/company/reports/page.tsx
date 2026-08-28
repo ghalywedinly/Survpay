@@ -52,19 +52,19 @@ export default async function CompanyReportsPage() {
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <div className="card">
           <h3 className="mb-4 text-sm font-bold text-ink-900">{t('gender')}</h3>
-          <BarList data={Object.entries(demographics.gender).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tGender(k as never)} color="#b32be0" />
+          <BarList data={Object.entries(demographics.gender).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tGender(k as never)} color="#AA52F7" />
         </div>
         <div className="card">
           <h3 className="mb-4 text-sm font-bold text-ink-900">{t('age')}</h3>
-          <BarList data={Object.entries(demographics.age).map(([k, v]) => ({ key: k, value: v }))} color="#12e5da" />
+          <BarList data={Object.entries(demographics.age).map(([k, v]) => ({ key: k, value: v }))} />
         </div>
         <div className="card">
           <h3 className="mb-4 text-sm font-bold text-ink-900">{t('city')}</h3>
-          <BarList data={Object.entries(demographics.city).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tCity(k as never)} color="#3229f2" />
+          <BarList data={Object.entries(demographics.city).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tCity(k as never)} />
         </div>
         <div className="card">
           <h3 className="mb-4 text-sm font-bold text-ink-900">{t('income')}</h3>
-          <BarList data={Object.entries(demographics.income).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tIncome(k as never)} color="#12b35e" />
+          <BarList data={Object.entries(demographics.income).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tIncome(k as never)} color="#20d9d5" />
         </div>
       </div>
 

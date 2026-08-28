@@ -64,7 +64,7 @@ export function MySurveysView({
             const Icon = meta.icon;
             return (
               <div key={r.id} className="card flex items-center gap-4 p-4">
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl" style={{ backgroundColor: `${meta.color}1a`, color: meta.color }}>
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center border-2 border-ink-200 text-ink-500">
                   <Icon size={20} />
                 </span>
                 <div className="min-w-0 flex-1">

@@ -48,7 +48,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       notifications={notifications}
       unreadCount={unread}
       notificationsHref="/admin/settings"
-      user={{ name: session.name, email: session.email, avatarColor: '#3229f2' }}
+      user={{ name: session.name, email: session.email, avatarColor: '#054CF6' }}
       userLinks={userLinks}
       logoutLabel={t('logout')}
     >

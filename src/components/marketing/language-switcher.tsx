@@ -6,6 +6,8 @@ import { useSearchParams } from 'next/navigation';
 import { clsx } from 'clsx';
 import { useTransition } from 'react';
 
+// "Language toggle always visible in the header, labelled in the target
+// language — عربي / EN." One capsule, one label: what it switches to.
 export function LanguageSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
   const pathname = usePathname();
@@ -13,27 +15,24 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
-  function switchTo(next: 'ar' | 'en') {
-    if (next === locale) return;
+  const target = locale === 'ar' ? 'en' : 'ar';
+
+  function toggle() {
     startTransition(() => {
-      router.replace({ pathname, query: Object.fromEntries(searchParams.entries()) } as never, { locale: next });
+      router.replace({ pathname, query: Object.fromEntries(searchParams.entries()) } as never, { locale: target });
     });
   }
 
   return (
-    <div className={clsx('inline-flex items-center rounded-full bg-ink-100 p-1 text-sm font-semibold', className)} aria-busy={isPending}>
-      <button
-        onClick={() => switchTo('ar')}
-        className={clsx('rounded-full px-3 py-1.5 transition-colors', locale === 'ar' ? 'bg-white text-ink-900 shadow-sm' : 'text-ink-500')}
-      >
-        العربية
-      </button>
-      <button
-        onClick={() => switchTo('en')}
-        className={clsx('rounded-full px-3 py-1.5 transition-colors', locale === 'en' ? 'bg-white text-ink-900 shadow-sm' : 'text-ink-500')}
-      >
-        English
-      </button>
-    </div>
+    <button
+      onClick={toggle}
+      aria-busy={isPending}
+      className={clsx(
+        'inline-flex items-center rounded-full border-2 border-ink-900 px-4 py-1.5 text-sm font-bold text-ink-900 transition-colors hover:bg-ink-100',
+        className
+      )}
+    >
+      {target === 'ar' ? 'عربي' : 'EN'}
+    </button>
   );
 }

@@ -133,7 +133,7 @@ export function CreateSurveyWizard({ locale }: { locale: Locale }) {
     return (
       <Modal open onClose={() => router.push('/company/surveys')} title={done.published ? t('launched') : t('savedDraft')}>
         <div className="text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-money-100 text-money-700">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center border-2 border-ink-900 bg-aqua-500 text-ink-900">
             <PartyPopper size={26} />
           </div>
           <p className="mt-4 text-sm text-ink-600">{done.published ? t('launchedBody') : t('savedDraftBody')}</p>
@@ -284,7 +284,7 @@ export function CreateSurveyWizard({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 rounded-xl bg-brand-50 px-4 py-3.5">
+            <div className="flex items-center gap-3 border-2 border-ink-900 bg-brand-50 px-4 py-3.5">
               <Sparkles size={18} className="text-brand-700" />
               <div>
                 <p className="text-xs font-semibold text-brand-700">{t('estimatedAudience')}</p>
@@ -297,13 +297,13 @@ export function CreateSurveyWizard({ locale }: { locale: Locale }) {
         {step === 3 && (
           <div className="space-y-4">
             {questions.map((q, i) => (
-              <div key={q.id} className="rounded-2xl border border-ink-100 p-4">
+              <div key={q.id} className="rounded-none border-2 border-ink-200 p-4">
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-bold text-ink-900">
                     {i + 1}. {tQType(q.type)}
                   </p>
                   {questions.length > 1 && (
-                    <button onClick={() => setQuestions((qs) => qs.filter((x) => x.id !== q.id))} className="text-ink-400 hover:text-red-600">
+                    <button onClick={() => setQuestions((qs) => qs.filter((x) => x.id !== q.id))} className="text-ink-400 hover:text-danger-600">
                       <Trash2 size={16} />
                     </button>
                   )}
@@ -361,11 +361,11 @@ export function CreateSurveyWizard({ locale }: { locale: Locale }) {
               onChange={(e) => setRewardPerResponse(Number(e.target.value))}
             />
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-xl bg-ink-50 px-4 py-3.5">
+              <div className="border-2 border-ink-200 bg-ink-50 px-4 py-3.5">
                 <p className="text-xs font-medium text-ink-500">{t('costPerResponse')}</p>
                 <p className="text-lg font-extrabold text-ink-900">{formatSar(costPerResponse, locale)}</p>
               </div>
-              <div className="rounded-xl bg-brand-50 px-4 py-3.5">
+              <div className="border-2 border-ink-900 bg-brand-50 px-4 py-3.5">
                 <p className="text-xs font-medium text-brand-700">{t('estimatedTotal')}</p>
                 <p className="text-lg font-extrabold text-brand-800">{formatSar(estimatedTotal, locale)}</p>
               </div>
@@ -376,7 +376,7 @@ export function CreateSurveyWizard({ locale }: { locale: Locale }) {
         {step === 5 && (
           <div className="space-y-5">
             <p className="text-sm text-ink-500">{t('reviewSummary')}</p>
-            <div className="rounded-2xl border border-ink-100 p-4">
+            <div className="rounded-none border-2 border-ink-200 p-4">
               <p className="text-lg font-extrabold text-ink-900">{name || '—'}</p>
               <p className="mt-1 text-sm text-ink-500">{description}</p>
               <div className="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-ink-500">
@@ -388,19 +388,19 @@ export function CreateSurveyWizard({ locale }: { locale: Locale }) {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              <div className="rounded-xl bg-ink-50 p-3.5 text-center">
+              <div className="border-2 border-ink-200 bg-ink-50 p-3.5 text-center">
                 <p className="text-xs text-ink-500">{t('estimatedAudience')}</p>
                 <p className="text-base font-extrabold text-ink-900">{formatNumber(audience, locale)}</p>
               </div>
-              <div className="rounded-xl bg-ink-50 p-3.5 text-center">
+              <div className="border-2 border-ink-200 bg-ink-50 p-3.5 text-center">
                 <p className="text-xs text-ink-500">{t('responsesRequired')}</p>
                 <p className="text-base font-extrabold text-ink-900">{formatNumber(targetResponses, locale)}</p>
               </div>
-              <div className="rounded-xl bg-ink-50 p-3.5 text-center">
+              <div className="border-2 border-ink-200 bg-ink-50 p-3.5 text-center">
                 <p className="text-xs text-ink-500">{t('costPerResponse')}</p>
                 <p className="text-base font-extrabold text-ink-900">{formatSar(costPerResponse, locale)}</p>
               </div>
-              <div className="rounded-xl bg-brand-50 p-3.5 text-center">
+              <div className="border-2 border-ink-900 bg-brand-50 p-3.5 text-center">
                 <p className="text-xs text-brand-700">{t('estimatedTotal')}</p>
                 <p className="text-base font-extrabold text-brand-800">{formatSar(estimatedTotal, locale)}</p>
               </div>

@@ -32,9 +32,9 @@ const ICONS: Record<ToastVariant, typeof CheckCircle2> = {
 };
 
 const STYLES: Record<ToastVariant, string> = {
-  success: 'border-money-200 bg-money-50 text-money-800',
-  error: 'border-red-200 bg-red-50 text-red-800',
-  info: 'border-ink-200 bg-white text-ink-800',
+  success: 'border-ink-900 bg-aqua-50 text-ink-900',
+  error: 'border-ink-900 bg-danger-50 text-ink-900',
+  info: 'border-ink-900 bg-paper text-ink-900',
 };
 
 export function ToastProvider({ children }: { children: React.ReactNode }) {
@@ -61,7 +61,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
             <div
               key={t.id}
               className={clsx(
-                'pointer-events-auto flex w-full max-w-sm animate-fade-up items-start gap-3 rounded-2xl border p-4 shadow-card',
+                'pointer-events-auto flex w-full max-w-sm animate-fade-up items-start gap-3 rounded-none border-2 p-4 shadow-overlay',
                 STYLES[t.variant]
               )}
             >

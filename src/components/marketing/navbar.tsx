@@ -20,7 +20,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink-100/80 bg-white/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b-2 border-ink-900 bg-paper">
       <nav className="container-app flex h-16 items-center justify-between">
         <Link href="/" className="shrink-0">
           <Logo size={26} />
@@ -52,8 +52,8 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="fixed inset-0 z-50 bg-white lg:hidden">
-          <div className="container-app flex h-16 items-center justify-between border-b border-ink-100">
+        <div className="fixed inset-0 z-50 bg-paper lg:hidden">
+          <div className="container-app flex h-16 items-center justify-between border-b-2 border-ink-900">
             <Logo size={26} />
             <button onClick={() => setOpen(false)} aria-label="Close menu" className="p-2">
               <X size={22} />
@@ -65,14 +65,14 @@ export function Navbar() {
                 key={l.href}
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-3 text-base font-semibold text-ink-700 hover:bg-ink-50"
+                className="rounded-none px-3 py-3 text-base font-bold text-ink-700 hover:bg-ink-50"
               >
                 {l.label}
               </a>
             ))}
             <div className="my-3 h-px bg-ink-100" />
             <LanguageSwitcher className="mb-3 self-start" />
-            <Link href="/login" className="rounded-xl px-3 py-3 text-base font-semibold text-ink-700 hover:bg-ink-50">
+            <Link href="/login" className="rounded-none px-3 py-3 text-base font-bold text-ink-700 hover:bg-ink-50">
               {t('login')}
             </Link>
             <Link href="/signup" className="mt-2">

@@ -35,7 +35,7 @@ export default async function CompanyAudiencePage() {
       <p className="mt-1 text-sm text-ink-500">{t('subtitle')}</p>
 
       <div className="mt-6 card flex items-center gap-4">
-        <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-100 text-brand-700">
+        <span className="flex h-12 w-12 items-center justify-center border-2 border-ink-900 text-ink-900">
           <Users2 size={22} />
         </span>
         <div>
@@ -47,19 +47,19 @@ export default async function CompanyAudiencePage() {
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
         <div className="card">
           <h3 className="mb-4 text-sm font-bold text-ink-900">{t('byCity')}</h3>
-          <BarList data={Object.entries(byCity).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tCity(k as never)} color="#3229f2" />
+          <BarList data={Object.entries(byCity).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tCity(k as never)} />
         </div>
         <div className="card">
           <h3 className="mb-4 text-sm font-bold text-ink-900">{t('byGender')}</h3>
-          <BarList data={Object.entries(byGender).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tGender(k as never)} color="#b32be0" />
+          <BarList data={Object.entries(byGender).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tGender(k as never)} color="#AA52F7" />
         </div>
         <div className="card">
           <h3 className="mb-4 text-sm font-bold text-ink-900">{t('byIncome')}</h3>
-          <BarList data={Object.entries(byIncome).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tIncome(k as never)} color="#12b35e" />
+          <BarList data={Object.entries(byIncome).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tIncome(k as never)} color="#20d9d5" />
         </div>
         <div className="card">
           <h3 className="mb-4 text-sm font-bold text-ink-900">{t('byInterest')}</h3>
-          <BarList data={Object.entries(byInterest).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tInterest(k as never)} color="#12e5da" />
+          <BarList data={Object.entries(byInterest).map(([k, v]) => ({ key: k, value: v }))} formatLabel={(k) => tInterest(k as never)} />
         </div>
       </div>
     </div>

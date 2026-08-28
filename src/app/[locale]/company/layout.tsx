@@ -52,12 +52,12 @@ export default async function CompanyLayout({ children }: { children: React.Reac
       notifications={notifications}
       unreadCount={unread}
       notificationsHref="/company/notifications"
-      user={{ name: session.name, email: session.email, avatarColor: company?.logoColor || '#3229f2' }}
+      user={{ name: session.name, email: session.email, avatarColor: company?.logoColor || '#AA52F7' }}
       userLinks={userLinks}
       logoutLabel={t('logout')}
       extra={
         company && (
-          <div className="hidden items-center gap-1.5 rounded-xl bg-brand-50 px-3 py-1.5 text-sm font-bold text-brand-700 sm:flex">
+          <div className="hidden items-center gap-1.5 rounded-full border-2 border-ink-900 bg-paper px-4 py-1.5 text-sm font-bold text-ink-900 sm:flex">
             <Wallet size={15} />
             {formatSar(company.walletBalance, locale)}
           </div>

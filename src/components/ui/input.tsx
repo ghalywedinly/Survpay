@@ -17,7 +17,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={inputId} className="mb-1.5 block text-sm font-medium text-ink-700">
+        <label htmlFor={inputId} className="mb-1.5 block text-sm font-bold text-ink-700">
           {label}
         </label>
       )}
@@ -31,9 +31,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           ref={ref}
           id={inputId}
           className={clsx(
-            'h-11 w-full rounded-xl border bg-white px-3.5 text-sm text-ink-900 placeholder:text-ink-400',
-            'transition-colors focus:outline-none focus:ring-2 focus:ring-brand-400/40',
-            error ? 'border-red-400 focus:border-red-400' : 'border-ink-200 focus:border-brand-400',
+            'h-11 w-full rounded-none border-2 bg-paper px-3.5 text-sm text-ink-900 placeholder:text-ink-400',
+            'transition-colors focus:outline-none',
+            error ? 'border-danger-500 focus:border-danger-500' : 'border-ink-200 focus:border-ink-900',
             leadingIcon && 'ps-10',
             trailingSlot && 'pe-10',
             className
@@ -44,7 +44,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
           <span className="absolute inset-y-0 end-3.5 flex items-center text-ink-400">{trailingSlot}</span>
         )}
       </div>
-      {error && <p className="mt-1.5 text-xs font-medium text-red-600">{error}</p>}
+      {error && <p className="mt-1.5 text-xs font-bold text-danger-600">{error}</p>}
       {!error && hint && <p className="mt-1.5 text-xs text-ink-500">{hint}</p>}
     </div>
   );
@@ -64,7 +64,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   return (
     <div className="w-full">
       {label && (
-        <label htmlFor={selectId} className="mb-1.5 block text-sm font-medium text-ink-700">
+        <label htmlFor={selectId} className="mb-1.5 block text-sm font-bold text-ink-700">
           {label}
         </label>
       )}
@@ -72,16 +72,16 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
         ref={ref}
         id={selectId}
         className={clsx(
-          'h-11 w-full rounded-xl border bg-white px-3.5 text-sm text-ink-900',
-          'transition-colors focus:outline-none focus:ring-2 focus:ring-brand-400/40 appearance-none',
-          error ? 'border-red-400' : 'border-ink-200 focus:border-brand-400',
+          'h-11 w-full rounded-none border-2 bg-paper px-3.5 text-sm text-ink-900',
+          'transition-colors focus:outline-none appearance-none',
+          error ? 'border-danger-500' : 'border-ink-200 focus:border-ink-900',
           className
         )}
         {...props}
       >
         {children}
       </select>
-      {error && <p className="mt-1.5 text-xs font-medium text-red-600">{error}</p>}
+      {error && <p className="mt-1.5 text-xs font-bold text-danger-600">{error}</p>}
       {!error && hint && <p className="mt-1.5 text-xs text-ink-500">{hint}</p>}
     </div>
   );
@@ -93,7 +93,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttrib
     return (
       <div className="w-full">
         {label && (
-          <label htmlFor={areaId} className="mb-1.5 block text-sm font-medium text-ink-700">
+          <label htmlFor={areaId} className="mb-1.5 block text-sm font-bold text-ink-700">
             {label}
           </label>
         )}
@@ -101,8 +101,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttrib
           ref={ref}
           id={areaId}
           className={clsx(
-            'w-full rounded-xl border border-ink-200 bg-white px-3.5 py-3 text-sm text-ink-900 placeholder:text-ink-400',
-            'transition-colors focus:outline-none focus:ring-2 focus:ring-brand-400/40 focus:border-brand-400',
+            'w-full rounded-none border-2 border-ink-200 bg-paper px-3.5 py-3 text-sm text-ink-900 placeholder:text-ink-400',
+            'transition-colors focus:outline-none focus:border-ink-900',
             className
           )}
           {...props}

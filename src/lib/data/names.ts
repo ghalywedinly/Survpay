@@ -49,4 +49,6 @@ export const COMPANY_CONTACT_NAMES = [
   'Bader Al-Otaibi',
 ];
 
-export const AVATAR_COLORS = ['#12e5da', '#b32be0', '#3229f2', '#12b35e', '#f59e0b', '#ec4899', '#8636e8'];
+// Avatars cycle the brand's three colours (purple, blue, a readable dark
+// aqua) plus two ink tints for variety across long user tables.
+export const AVATAR_COLORS = ['#AA52F7', '#054CF6', '#0c8d8a', '#433c5d', '#6d6298'];

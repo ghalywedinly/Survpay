@@ -4,11 +4,11 @@ type BadgeVariant = 'neutral' | 'success' | 'warning' | 'danger' | 'info' | 'bra
 
 const STYLES: Record<BadgeVariant, string> = {
   neutral: 'bg-ink-100 text-ink-700',
-  success: 'bg-money-100 text-money-800',
+  success: 'bg-aqua-100 text-aqua-800',
   warning: 'bg-amber-100 text-amber-800',
-  danger: 'bg-red-100 text-red-700',
-  info: 'bg-sky-100 text-sky-700',
-  brand: 'bg-brand-100 text-brand-800',
+  danger: 'bg-danger-100 text-danger-700',
+  info: 'bg-signal-100 text-signal-700',
+  brand: 'bg-brand-100 text-brand-700',
 };
 
 export function Badge({
@@ -25,7 +25,7 @@ export function Badge({
   return (
     <span
       className={clsx(
-        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold',
+        'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-bold uppercase tracking-wide',
         STYLES[variant],
         className
       )}

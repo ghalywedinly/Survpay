@@ -29,10 +29,10 @@ export function Topbar({
   showLogo?: boolean;
 }) {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-ink-100 bg-white/90 px-4 backdrop-blur-md sm:px-6">
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b-2 border-ink-900 bg-paper px-4 sm:px-6">
       <div className="flex items-center gap-3">
         {onMenuClick && (
-          <button onClick={onMenuClick} className="rounded-xl p-2 text-ink-600 hover:bg-ink-100 lg:hidden" aria-label="Menu">
+          <button onClick={onMenuClick} className="rounded-full p-2 text-ink-600 hover:bg-ink-100 lg:hidden" aria-label="Menu">
             <Menu size={20} />
           </button>
         )}

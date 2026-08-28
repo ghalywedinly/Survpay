@@ -54,7 +54,7 @@ export default async function ParticipantLayout({ children }: { children: React.
       notifications={notifications}
       unreadCount={unread}
       notificationsHref="/participant/notifications"
-      user={{ name: session.name, email: session.email, avatarColor: '#12b35e' }}
+      user={{ name: session.name, email: session.email, avatarColor: '#0c8d8a' }}
       userLinks={userLinks}
       logoutLabel={t('logout')}
       bottomNav={
@@ -62,7 +62,7 @@ export default async function ParticipantLayout({ children }: { children: React.
       }
       extra={
         profile && (
-          <div className="hidden items-center gap-1.5 rounded-xl bg-money-50 px-3 py-1.5 text-sm font-bold text-money-700 sm:flex">
+          <div className="hidden items-center gap-1.5 rounded-full bg-aqua-500 px-4 py-1.5 text-sm font-bold text-ink-900 sm:flex">
             <Wallet size={15} />
             {formatSar(profile.balanceAvailable, locale)}
           </div>

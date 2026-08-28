@@ -1,6 +1,6 @@
 export function BarList({
   data,
-  color = '#8636e8',
+  color = '#054CF6',
   formatLabel,
   formatValue,
 }: {
@@ -22,8 +22,8 @@ export function BarList({
             <span className="font-medium text-ink-700">{formatLabel ? formatLabel(d.key) : d.key}</span>
             <span className="font-bold text-ink-900">{formatValue ? formatValue(d.value) : d.value}</span>
           </div>
-          <div className="h-2 w-full overflow-hidden rounded-full bg-ink-100">
-            <div className="h-full rounded-full transition-all duration-500" style={{ width: `${(d.value / max) * 100}%`, backgroundColor: color }} />
+          <div className="h-2 w-full overflow-hidden rounded-none bg-ink-100">
+            <div className="h-full transition-all duration-500" style={{ width: `${(d.value / max) * 100}%`, backgroundColor: color }} />
           </div>
         </div>
       ))}
