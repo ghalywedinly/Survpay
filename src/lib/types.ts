@@ -242,3 +242,51 @@ export interface FraudFlag {
   severity: 'low' | 'medium' | 'high';
   resolved: boolean;
 }
+
+// --- Studio: the founder's own product portfolio + AI agent chat ---------
+// Separate from the marketplace domain above: this is the admin's personal
+// "projects I'm building" dashboard (Survpay itself being the first entry).
+
+export type ProjectStageKey = 'design' | 'coding' | 'publishing';
+export type ProjectStageStatus = 'not_started' | 'in_progress' | 'done';
+
+export interface ProjectStage {
+  key: ProjectStageKey;
+  status: ProjectStageStatus;
+  updatedAt: string;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  color: string;
+  repoUrl?: string;
+  liveUrl?: string;
+  stack: string[];
+  stages: ProjectStage[];
+  createdAt: string;
+}
+
+export type AgentRole = 'design' | 'coding' | 'publishing' | 'general';
+
+export interface Agent {
+  id: string;
+  projectId: string;
+  role: AgentRole;
+  name: string;
+  color: string;
+  description: string;
+}
+
+export type AgentMessageSender = 'user' | 'agent';
+
+export interface AgentMessage {
+  id: string;
+  projectId: string;
+  agentId: string;
+  sender: AgentMessageSender;
+  content: string;
+  createdAt: string;
+}
