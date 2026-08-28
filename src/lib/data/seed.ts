@@ -18,6 +18,9 @@ import type {
   FraudFlag,
   TargetAudience,
   Gender,
+  Project,
+  Agent,
+  AgentMessage,
 } from '../types';
 
 export interface Database {
@@ -29,6 +32,9 @@ export interface Database {
   transactions: Transaction[];
   withdrawals: Withdrawal[];
   notifications: Notification[];
+  projects: Project[];
+  agents: Agent[];
+  agentMessages: AgentMessage[];
 }
 
 const DEMO_PASSWORD = 'Survpay2026!';
@@ -503,7 +509,82 @@ export async function buildDatabase(): Promise<Database> {
     }
   }
 
-  return { users, participants, companies, surveys, responses, transactions, withdrawals, notifications };
+  // --- Studio seed: the founder's own product portfolio -------------------
+  // Starts with just Survpay itself (this app), tracked design -> coding ->
+  // publishing. More of the founder's companies get added the same way
+  // later, from the Studio "New project" form.
+  const survpayProject: Project = {
+    id: 'project-survpay',
+    name: 'Survpay',
+    tagline: 'Saudi Arabia survey rewards marketplace',
+    description:
+      'A full-stack MVP where companies create targeted surveys, participants answer them and get paid in SAR, and an internal admin team runs the platform. Arabic-first, fully bilingual with RTL support.',
+    color: '#3229f2',
+    repoUrl: 'https://github.com/ghalywedinly/survpay',
+    stack: ['Next.js 14', 'TypeScript', 'Tailwind CSS', 'next-intl', 'Recharts'],
+    stages: [
+      { key: 'design', status: 'done', updatedAt: new Date(now - 60 * 24 * 60 * 60 * 1000).toISOString() },
+      { key: 'coding', status: 'in_progress', updatedAt: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString() },
+      { key: 'publishing', status: 'not_started', updatedAt: new Date(now - 60 * 24 * 60 * 60 * 1000).toISOString() },
+    ],
+    createdAt: new Date(now - 60 * 24 * 60 * 60 * 1000).toISOString(),
+  };
+  const projects: Project[] = [survpayProject];
+
+  const AGENT_SEEDS: { id: string; role: Agent['role']; name: string; color: string; description: string }[] = [
+    {
+      id: 'agent-survpay-design',
+      role: 'design',
+      name: 'Design Agent',
+      color: '#b32be0',
+      description: 'Brand, UI/UX, and visual design for Survpay.',
+    },
+    {
+      id: 'agent-survpay-coding',
+      role: 'coding',
+      name: 'Coding Agent',
+      color: '#3229f2',
+      description: 'Builds and ships features across the Survpay codebase.',
+    },
+    {
+      id: 'agent-survpay-publishing',
+      role: 'publishing',
+      name: 'Publishing Agent',
+      color: '#12b35e',
+      description: 'Handles deployment, launch checklist, and go-live for Survpay.',
+    },
+  ];
+  const agents: Agent[] = AGENT_SEEDS.map((a) => ({ ...a, projectId: survpayProject.id }));
+
+  const AGENT_WELCOME: Record<string, string> = {
+    'agent-survpay-design':
+      "Hey! I'm the Design Agent for Survpay. Ask me about the brand, UI components, or anything on the design backlog.",
+    'agent-survpay-coding':
+      "Hey! I'm the Coding Agent for Survpay. Ask me about the codebase, a feature you want built, or a bug to fix.",
+    'agent-survpay-publishing':
+      "Hey! I'm the Publishing Agent for Survpay. Ask me about the launch checklist, hosting, or going live.",
+  };
+  const agentMessages: AgentMessage[] = agents.map((agent, i) => ({
+    id: `msg-welcome-${agent.id}`,
+    projectId: agent.projectId,
+    agentId: agent.id,
+    sender: 'agent',
+    content: AGENT_WELCOME[agent.id],
+    createdAt: new Date(now - (60 - i) * 60 * 1000).toISOString(),
+  }));
+  return {
+    users,
+    participants,
+    companies,
+    surveys,
+    responses,
+    transactions,
+    withdrawals,
+    notifications,
+    projects,
+    agents,
+    agentMessages,
+  };
 }
 
 const FLAG_DESCRIPTIONS: Record<FraudFlag['type'], string> = {

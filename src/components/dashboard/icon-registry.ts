@@ -22,6 +22,11 @@ import {
   Receipt,
   ShieldAlert,
   LifeBuoy,
+  Rocket,
+  Bot,
+  PenTool,
+  Code2,
+  Send,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -46,6 +51,11 @@ export const ICONS = {
   receipt: Receipt,
   shieldAlert: ShieldAlert,
   lifeBuoy: LifeBuoy,
+  rocket: Rocket,
+  bot: Bot,
+  penTool: PenTool,
+  code2: Code2,
+  send: Send,
 } satisfies Record<string, LucideIcon>;
 
 export type IconKey = keyof typeof ICONS;

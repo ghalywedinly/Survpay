@@ -9,9 +9,21 @@ import {
   Car,
   Sparkles,
   Grid3x3,
+  PenTool,
+  Code2,
+  Rocket,
   type LucideIcon,
 } from 'lucide-react';
-import { InterestKey, DeviceKey, SurveyCategory, IncomeRange, EmploymentStatus, MaritalStatus } from './types';
+import {
+  InterestKey,
+  DeviceKey,
+  SurveyCategory,
+  IncomeRange,
+  EmploymentStatus,
+  MaritalStatus,
+  ProjectStageKey,
+  AgentRole,
+} from './types';
 
 export const CATEGORY_META: Record<SurveyCategory, { icon: LucideIcon; color: string }> = {
   shopping: { icon: ShoppingBag, color: '#b32be0' },
@@ -58,6 +70,21 @@ export const INCOME_RANGES: IncomeRange[] = ['under_5k', '5k_10k', '10k_15k', '1
 export const EMPLOYMENT_STATUSES: EmploymentStatus[] = ['employed', 'self_employed', 'unemployed', 'student', 'retired'];
 
 export const MARITAL_STATUSES: MaritalStatus[] = ['single', 'married', 'divorced', 'widowed'];
+
+export const PROJECT_STAGE_ORDER: ProjectStageKey[] = ['design', 'coding', 'publishing'];
+
+export const PROJECT_STAGE_META: Record<ProjectStageKey, { icon: LucideIcon; color: string }> = {
+  design: { icon: PenTool, color: '#b32be0' },
+  coding: { icon: Code2, color: '#3229f2' },
+  publishing: { icon: Rocket, color: '#12b35e' },
+};
+
+export const AGENT_ROLE_META: Record<AgentRole, { icon: LucideIcon; color: string }> = {
+  design: { icon: PenTool, color: '#b32be0' },
+  coding: { icon: Code2, color: '#3229f2' },
+  publishing: { icon: Rocket, color: '#12b35e' },
+  general: { icon: Sparkles, color: '#8636e8' },
+};
 
 export const INDUSTRIES = [
   'Retail',
